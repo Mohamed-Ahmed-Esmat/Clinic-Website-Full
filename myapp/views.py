@@ -9,10 +9,17 @@ def index(request):
     features.name = 'Feature 1'
     features.description = 'This is the first feature'
     
-    return render(request, 'test.html', {'feature': features})
+    return render(request, 'index.html', {'feature': features})
 
-def counter(request):
-    text = request.POST['text']
-    words_count= len(text.split())
-    return render(request, 'counter.html', {'count': words_count})
+#def counter(request):
+ #   text = request.POST['text']
+   #  words_count= len(text.split())
+#   return render(request, 'counter.html', {'count': words_count})
+
+def contact(request):
+    return render(request, 'contact.html')
+def news(request):
+    return render(request, 'news.html')
+def health(request):
+    return render(request, 'health.html')
 
