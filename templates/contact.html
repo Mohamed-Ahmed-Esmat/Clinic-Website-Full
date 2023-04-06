@@ -95,9 +95,11 @@
                          <span id="message1"></span>
                          <select class="Email_text" id="Available_Dates" placeholder ="Available_Dates" name="Available_Dates" required>
                            <option value="" disabled selected>Available Dates</option>
-                           {% for available in available %}
-                           <option value="res">{{available.day}}-{{available.month}}-{{available.year}} | {{available.time}}</option>
+     
+                           {% for available_date in available_date %}
+                           <option value="res">{{available_date.day}}-{{available_date.month}}-{{available_date.year}} | {{available_date.time}}</option>
                            {% endfor %}
+                    
                          </select>
                          <span id="message"></span>
                         <button type="submit" class="send_bt">SEND</button>

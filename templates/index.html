@@ -186,7 +186,8 @@
                   </div>
                </div>
                <div class="col-md-6">
-                  <form id="contact-form">
+                  <form method="post" id="contact-form">
+                     {% csrf_token %}
                   <div class="contact_box">
                      <h1 class="book_text">Appoinment Booking</h1>
                      <input type="text" class="Email_text" placeholder="Name" name="Name" required>
