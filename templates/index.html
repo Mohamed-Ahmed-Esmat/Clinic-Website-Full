@@ -209,21 +209,19 @@
                         {% for available_resv in available_resv %}
                         <option value="res">{{available_resv.day}}-{{available_resv.month}}-{{available_resv.year}} | {{available_resv.time}}</option>
                         {% endfor %}
-                        {% break %}
-                        
+                       
                         
                         {% elif booking.type == 'Teleconsultation' %}
                         {% for available_tele in available_tele %}
                         <option value="res">{{available_tele.day}}-{{available_tele.month}}-{{available_tele.year}} | {{available_tele.time}}</option>
                         {% endfor %}
-                        {% break %}
+                      
                         
                         
                         {% elif booking.type == 'Operation' %}
                         {% for available_oper in available_oper %}
                         <option value="res">{{available_oper.day}}-{{available_oper.month}}-{{available_oper.year}} | {{available_oper.time}}</option>
                         {% endfor %}
-                        {% break %}
                         {% endif %}
                         {% endfor %} 
                         

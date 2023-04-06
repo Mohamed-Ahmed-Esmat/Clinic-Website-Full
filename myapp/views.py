@@ -15,7 +15,7 @@ def index(request):
     available_tel = Available_Tel.objects.all()
     available_oper = Available_Oper.objects.all()
     booking = Booking.objects.all()
-    return render(request, 'test.html', {'features': features, 'available_resv': available_resv, 'available_tel': available_tel, 'available_oper': available_oper, 'booking': booking})
+    return render(request, 'index.html', {'features': features, 'available_resv': available_resv, 'available_tel': available_tel, 'available_oper': available_oper, 'booking': booking})
 
 def register(request):
     if request.method == 'POST':
