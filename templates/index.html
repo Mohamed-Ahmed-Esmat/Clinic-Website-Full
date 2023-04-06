@@ -193,17 +193,45 @@
                      <input type="tel" id="Telephone" placeholder="Phone Number" name="Telephone" pattern="\d{11}"  maxlength="15" required>
                      <select class="Email_text" id ="Book" placeholder ="Book" name ="Book" required>
                         <option value="" disabled selected>Booking Type</option>
-                        <option value="res">Reservation</option>
-                        <option value="option2">Teleconsultation</option>
-                        <option value="option3">Operation</option>
+                        {% for booking in booking %}
+                        <option value="res">{{booking.type}}</option>
+                        {% if booking.type == 'Reservation' %}
+                        <p>Reservation is selected</p>
+                        {% endif %}
+                        {% endfor %}
                       </select>
                       <span id="message1"></span>
+                      
                       <select class="Email_text" id="Available_Dates" placeholder ="Available_Dates" name="Available_Dates" required>
                         <option value="" disabled selected>Available Dates</option>
-                        <option value="res">15th of June</option>
-                        <option value="option2">5th of July</option>
-                        <option value="option3">13th of July</option>
+                        {% for booking in booking %}
+                        {% if booking.type == 'Reservation' %}
+                        {% for available_resv in available_resv %}
+                        <option value="res">{{available_resv.day}}-{{available_resv.month}}-{{available_resv.year}} | {{available_resv.time}}</option>
+                        {% endfor %}
+                        {% break %}
+                        
+                        
+                        {% elif booking.type == 'Teleconsultation' %}
+                        {% for available_tele in available_tele %}
+                        <option value="res">{{available_tele.day}}-{{available_tele.month}}-{{available_tele.year}} | {{available_tele.time}}</option>
+                        {% endfor %}
+                        {% break %}
+                        
+                        
+                        {% elif booking.type == 'Operation' %}
+                        {% for available_oper in available_oper %}
+                        <option value="res">{{available_oper.day}}-{{available_oper.month}}-{{available_oper.year}} | {{available_oper.time}}</option>
+                        {% endfor %}
+                        {% break %}
+                        {% endif %}
+                        {% endfor %} 
+                        
+                       
+                        
                       </select>
+                      
+                   
                       <span id="message"></span>
                      <button type="submit" class="send_bt">SEND</button>
                   </form>
