@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
+from django.contrib import messages
 from .models import Feature
 from .models import Available_Resv
 from .models import Available_Tel
@@ -13,10 +15,38 @@ def index(request):
     available_tel = Available_Tel.objects.all()
     available_oper = Available_Oper.objects.all()
     booking = Booking.objects.all()
-    return render(request, 'index.html', {'features': features, 'available_resv': available_resv, 'available_tel': available_tel, 'available_oper': available_oper, 'booking': booking})
+    return render(request, 'test.html', {'features': features, 'available_resv': available_resv, 'available_tel': available_tel, 'available_oper': available_oper, 'booking': booking})
 
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+      
+        email = request.POST['email']
+        if User.objects.filter(username=username).exists():
+                messages.info(request, 'Username Taken')
+                return redirect('register')
+        elif User.objects.filter(email=email).exists():
+                messages.info(request, 'Email Taken')
+                return redirect('register')
+        else:
+                user = User.objects.create_user(username=username, password=password, email=email)
+                user.save()
+                return redirect('login')
+    return render(request, 'register.html')
 
-
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('index')
+        else:
+            messages.info(request, 'Invalid Credentials')
+            return redirect('login')
+    return render(request, 'login.html')
 
 #def counter(request):
  #   text = request.POST['text']
