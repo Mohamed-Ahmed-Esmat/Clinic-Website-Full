@@ -196,9 +196,6 @@
                         <option value="" disabled selected>Booking Type</option>
                         {% for booking in booking %}
                         <option value="res">{{booking.type}}</option>
-                        {% if booking.type == 'Reservation' %}
-                        <p>Reservation is selected</p>
-                        {% endif %}
                         {% endfor %}
                       </select>
                       <span id="message1"></span>
