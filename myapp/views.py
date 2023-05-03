@@ -5,6 +5,7 @@ from django.contrib import messages
 from .models import Feature
 from .models import Available_Date
 from .models import Booking
+from django.views.generic import (ListView, CreateView, UpdateView, DeleteView)
 
 # Create your views here.
 def index(request):
@@ -57,4 +58,5 @@ def news(request):
     return render(request, 'news.html')
 def health(request):
     return render(request, 'health.html')
+
 
