@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.contrib import messages
+from .models import Patient
 from .models import Feature
 from .models import Available_Date
 from .models import Booking
@@ -60,3 +61,17 @@ def health(request):
     return render(request, 'health.html')
 
 
+    
+   
+
+def my_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('Name')
+        telephone = request.POST.get('Telephone')
+        book_time = request.POST.get('Available_Dates')
+        book_type = request.POST.get('Book')
+
+        patient = Patient(name=name, telephone=telephone, book_time=book_time, book_type=book_type)
+        patient.save()
+
+    return render(request, 'index.html',{})
