@@ -20,3 +20,11 @@ class Booking(models.Model):
      def __str__(self):
           return self.type
           
+class Patient (models.Model):
+     name = models.CharField(max_length=100, default='')
+     telephone = models.CharField(max_length=100, default='')
+     book_time = models.ForeignKey(Available_Date, on_delete=models.CASCADE, default=1)
+     book_type = models.ForeignKey(Booking, on_delete=models.CASCADE, default=1)
+
+     def str(self):
+          return self.name          
