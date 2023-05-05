@@ -12,16 +12,58 @@
         <form method="post" action="register">
             {% csrf_token %}
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="Name" id="username">
             <br><br>
             <label for="password">Password:</label>
-            <input type="password" name="password" >
+            <input type="text" name="Telephone" >
             <br><br>
             <br><br>
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email">
+            <select class="Email_text" id ="Book" placeholder ="Book" name ="Book" required>
+                <option value="" disabled selected>Booking Type</option>
+                {% for booking in booking %}
+                <option value="{{booking.id}}">{{booking.type}}</option>
+                {% endfor %}
+              </select>
+              <span id="message1"></span>
+              
+              <select class="Email_text" id="Available_Dates" placeholder ="Available_Dates" name="Available_Dates" required>
+                <option value="" disabled selected>Available Dates</option>
+
+                {% for available_date in available_date %}
+                <option value="{{available_date.id}}">{{available_date.day}}-{{available_date.month}}-{{available_date.year}} | {{available_date.time}}</option>
+                {% endfor %}
+         
+              </select>
             <br><br>
             <input type="submit" value="Submit">
         </form>
+
+        <form method="post" id="contact-form">
+            {% csrf_token %}
+         <div class="contact_box">
+            <h1 class="book_text">Appoinment Booking</h1>
+            <input type="text" id= "Name" class="Email_text" placeholder="Name" name="Name" required>
+            <input type="tel" id="Telephone" placeholder="Phone Number" name="Telephone" pattern="\d{11}"  maxlength="15" required>
+            <select class="Email_text" id ="Book" placeholder ="Book" name ="Book" required>
+               <option value="" disabled selected>Booking Type</option>
+               {% for booking in booking %}
+               <option value="res">{{booking.type}}</option>
+               {% endfor %}
+             </select>
+             <span id="message1"></span>
+             
+             <select class="Email_text" id="Available_Dates" placeholder ="Available_Dates" name="Available_Dates" required>
+               <option value="" disabled selected>Available Dates</option>
+
+               {% for available_date in available_date %}
+               <option value="res">{{available_date.day}}-{{available_date.month}}-{{available_date.year}} | {{available_date.time}}</option>
+               {% endfor %}
+        
+             </select>
+             
+          
+             <span id="message"></span>
+            <button type="submit" class="send_bt">SEND</button>
+         </form>
     </body>
 </html>
