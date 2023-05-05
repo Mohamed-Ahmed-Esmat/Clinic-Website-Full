@@ -29,7 +29,7 @@ def register(request):
         patient = Patient(name=name, telephone=telephone, book_time=book_time, book_type=book_type)
         patient.save()
                 
-    return render(request, 'index.html')
+    return  redirect('index')
 
 def login(request):
     if request.method == 'POST':
