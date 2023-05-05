@@ -9,15 +9,13 @@
             <h5 style="color: red;">{{message}}</h5>
         {% endfor %}
 
-        <form method="post" action="register">
+        <form method="post" action="contact-form">
             {% csrf_token %}
-            <label for="username">Username:</label>
-            <input type="text" name="Name" id="username">
-            <br><br>
-            <label for="password">Password:</label>
-            <input type="text" name="Telephone" >
-            <br><br>
-            <br><br>
+            <div class="contact_box">
+              <h1 class="book_text">Appoinment Booking</h1>
+              <input type="text" id= "Name" class="Email_text" placeholder="Name" name="Name" required>
+              <input type="tel" id="Telephone" placeholder="Phone Number" name="Telephone" pattern="\d{11}"  maxlength="15" required>
+              
             <select class="Email_text" id ="Book" placeholder ="Book" name ="Book" required>
                 <option value="" disabled selected>Booking Type</option>
                 {% for booking in booking %}
@@ -34,8 +32,8 @@
                 {% endfor %}
          
               </select>
-            <br><br>
-            <input type="submit" value="Submit">
+              <span id="message"></span>
+              <button type="submit" class="send_bt">SEND</button>
         </form>
 
         <form method="post" id="contact-form">
