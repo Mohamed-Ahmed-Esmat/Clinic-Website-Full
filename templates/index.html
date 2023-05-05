@@ -186,7 +186,7 @@
                   </div>
                </div>
                <div class="col-md-6">
-                  <form method="post" id="contact-form">
+                  <form method="post" id="contact-form" action="{% url 'my_view' %}">
                      {% csrf_token %}
                   <div class="contact_box">
                      <h1 class="book_text">Appoinment Booking</h1>
