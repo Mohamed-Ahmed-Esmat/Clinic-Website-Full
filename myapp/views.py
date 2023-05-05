@@ -17,21 +17,19 @@ def index(request):
 
 def register(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-      
-        email = request.POST['email']
-        if User.objects.filter(username=username).exists():
-                messages.info(request, 'Username Taken')
-                return redirect('register')
-        elif User.objects.filter(email=email).exists():
-                messages.info(request, 'Email Taken')
-                return redirect('register')
-        else:
-                user = User.objects.create_user(username=username, password=password, email=email)
-                user.save()
-                return redirect('login')
-    return render(request, 'register.html')
+        name = request.POST.get('Name')
+        telephone = request.POST.get('Telephone')
+        book_time_id = request.POST.get('Available_Dates')
+        book_type_id = request.POST.get('Book')
+        if book_time_id:
+            # Retrieve the corresponding booking and available date objects
+            book_time = Available_Date.objects.get(pk=book_time_id)
+            book_type = Booking.objects.get(pk=book_type_id)
+
+        patient = Patient(name=name, telephone=telephone, book_time=book_time, book_type=book_type)
+        patient.save()
+                
+    return render(request, 'index.html')
 
 def login(request):
     if request.method == 'POST':
@@ -75,3 +73,22 @@ def my_view(request):
         patient.save()
 
     return render(request, 'index.html',{})
+
+
+
+def my_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('Name')
+        telephone = request.POST.get('Telephone')
+        book_time_id = request.POST.get('Available_Dates')
+        book_type_id = request.POST.get('Book')
+        if book_time_id:
+            # Retrieve the corresponding booking and available date objects
+            book_time = Available_Date.objects.get(pk=book_time_id)
+            book_type = Booking.objects.get(pk=book_type_id)
+
+        patient = Patient(name=name, telephone=telephone, book_time=book_time, book_type=book_type)
+        patient.save()
+                
+    return render(request, 'index.html')
+

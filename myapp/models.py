@@ -26,5 +26,5 @@ class Patient (models.Model):
      book_time = models.ForeignKey(Available_Date, on_delete=models.CASCADE, default=1)
      book_type = models.ForeignKey(Booking, on_delete=models.CASCADE, default=1)
 
-     def str(self):
+     def __str__(self):
           return self.name          
