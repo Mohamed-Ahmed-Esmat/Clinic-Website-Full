@@ -5,6 +5,7 @@ class Feature(models.Model):
      name = models.CharField(max_length=100, default='')
      details = models.CharField(max_length=500, default='')
 
+
 class Available_Date(models.Model):
      day = models.IntegerField(default=31)
      month = models.CharField(max_length=3, default='Dec')
@@ -13,6 +14,8 @@ class Available_Date(models.Model):
 
      def __str__(self):
           return f"{self.month} {self.day}"
+
+
 
 class Booking(models.Model):
      type = models.CharField(max_length=20, default='')
