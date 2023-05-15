@@ -28,7 +28,7 @@ def register(request):
         patient = Patient(name=name, telephone=telephone, book_time=book_time, book_type=book_type)
         patient.save()
                 
-    return  redirect('index')
+    return  render(request,'booked.html')
 
 def login(request):
     if request.method == 'POST':
@@ -58,7 +58,8 @@ def health(request):
     return render(request, 'health.html')
 
 
-    
+def booked(request):
+    return render(request, 'booked.html')    
    
 
 
