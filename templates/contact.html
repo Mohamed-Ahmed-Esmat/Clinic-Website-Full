@@ -81,29 +81,32 @@
                      </div>
                   </div>
                   <div class="col-md-6">
-                     <form id="contact-form">
+                     <form method="post" id="contact-form" action="{% url 'register' %}">
+                     {% csrf_token %}
                      <div class="contact_box">
-                        <h1 class="book_text">Appoinment Booking</h1>
-                        <input type="text" class="Email_text" placeholder="Name" name="Name" required>
-                        <input type="tel" id="Telephone" placeholder="Phone Number" name="Telephone" pattern="\d{11}"  maxlength="11" required>
-                        <select class="Email_text" id ="Book" placeholder ="Book" name ="Book" required>
-                           <option value="" disabled selected>Booking Type</option>
-                           {% for booking in booking %}
-                           <option value="res">{{booking.type}}</option>
-                           {% endfor %}
-                         </select>
-                         <span id="message1"></span>
-                         <select class="Email_text" id="Available_Dates" placeholder ="Available_Dates" name="Available_Dates" required>
-                           <option value="" disabled selected>Available Dates</option>
-     
-                           {% for available_date in available_date %}
-                           <option value="res">{{available_date.day}}-{{available_date.month}}-{{available_date.year}} | {{available_date.time}}</option>
-                           {% endfor %}
-                    
-                         </select>
-                         <span id="message"></span>
-                        <button type="submit" class="send_bt">SEND</button>
-                     </form>
+                       <h1 class="book_text">Appoinment Booking</h1>
+                       <input type="text" id= "Name" class="Email_text" placeholder="Name" name="Name" required>
+                       <input type="tel" id="Telephone" placeholder="Phone Number" name="Telephone" pattern="\d{11}"  maxlength="15" required>
+                       
+                     <select class="Email_text" id ="Book" placeholder ="Book" name ="Book" required>
+                         <option value="" disabled selected>Booking Type</option>
+                         {% for booking in booking %}
+                         <option value="{{booking.id}}">{{booking.type}}</option>
+                         {% endfor %}
+                       </select>
+                       <span id="message1"></span>
+                       
+                       <select class="Email_text" id="Available_Dates" placeholder ="Available_Dates" name="Available_Dates" required>
+                         <option value="" disabled selected>Available Dates</option>
+         
+                         {% for available_date in available_date %}
+                         <option value="{{available_date.id}}">{{available_date.day}}-{{available_date.month}}-{{available_date.year}} | {{available_date.time}}</option>
+                         {% endfor %}
+                  
+                       </select>
+                       <span id="message"></span>
+                       <button type="submit" class="send_bt">SEND</button>
+                 </form>
                      </div>
                   </div>
                </div>
