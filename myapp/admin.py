@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import Feature
 from .models import Available_Date
 from .models import Booking
 from .models import Patient
