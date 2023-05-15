@@ -3,7 +3,6 @@ from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.contrib import messages
 from .models import Patient
-from .models import Feature
 from .models import Available_Date
 from .models import Booking
 from django.views.generic import (ListView, CreateView, UpdateView, DeleteView)
