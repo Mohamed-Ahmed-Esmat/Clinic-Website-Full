@@ -3,17 +3,16 @@ from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.contrib import messages
 from .models import Patient
-from .models import Feature
 from .models import Available_Date
 from .models import Booking
 from django.views.generic import (ListView, CreateView, UpdateView, DeleteView)
 
 # Create your views here.
 def index(request):
-    features = Feature.objects.all()
+   
     available_date = Available_Date.objects.all()
     booking = Booking.objects.all()
-    return render(request, 'index.html', {'features': features,  'available_date': available_date, 'booking': booking})
+    return render(request, 'index.html', { 'available_date': available_date, 'booking': booking})
 
 def register(request):
     if request.method == 'POST':
