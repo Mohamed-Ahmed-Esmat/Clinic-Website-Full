@@ -7,8 +7,11 @@ class Available_Date(models.Model):
      day = models.IntegerField(default=31)
      month = models.CharField(max_length=3, default='Dec')
      year = models.IntegerField(default=2023)
+<<<<<<< HEAD
      time = models.CharField(max_length=10, default='12:00')
      is_available = models.BooleanField(default=True)
+=======
+>>>>>>> a541259f6fcb013411b33a3af868fb4d6d74f9dc
 
      def __str__(self):
           return f"{self.month} {self.day}"
