@@ -197,21 +197,21 @@ $(function () {
 		  },
 		  messages: {
 			  Name: {
-				  required: "Please enter your name",
-				  namePattern: "Please enter a valid name",
+				  required: "Please enter your name.",
+				  namePattern: "Please enter a valid name.",
 			  },
 			  Telephone: {
-				  required: "Please enter your phone number",
-				  number: "Please enter only digits",
-				  phonePattern: "Your phone number should start with 01",
-				  minlength: "Your telephone number should contain 11 digits",
+				  required: "Please enter your phone number.",
+				  number: "Please enter only digits.",
+				  phonePattern: "Your phone number should start with 01.",
+				  minlength: "Your telephone number should contain 11 digits.",
 
 			  },
 			  Book: {
-				  required: "Please choose your booking type",
+				  required: "Please choose your booking type.",
 			  },
 			  Available_Dates: {
-				  required: "Please choose the available date",
+				  required: "Please choose the available date.",
 			  }
 		  },
 			errorElement: "div",
