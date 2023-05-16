@@ -174,6 +174,7 @@ $(function () {
                     number: true,
                     phonePattern: true,
                     minlength: 11,
+					maxlength:11
                 },
                 Book: {
                     required: true,
@@ -189,6 +190,7 @@ $(function () {
                     number: "Please enter only digits",
                     phonePattern: "Your phone number should start with 01",
                     minlength: "Your telephone number should contain 11 digits",
+					maxlength: "Your telephone number should contain 11 digits only"
 
                 },
                 Book: {
