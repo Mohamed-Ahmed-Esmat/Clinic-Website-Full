@@ -158,39 +158,47 @@ $(function () {
 	});*/
 
 	$(document).ready(function () {
-		$("#contact-form").validate({
-			rules: {
-				Name: "required",
-				Telephone: {
-					required: true,
-					number: true,
-					minlength: 11
-				},
-				Book:{
-					required: true,
-				},
-				Available_Dates:{
-					required: true,
-				}
-				
-			},
-			messages: {
-				Name: "Please enter your name",
-				Telephone: {
-					required: "Please enter your phone number",
-					number: "Please enter only digits",
-					minlength: "Your telephone number should contain 11 digits"
-					
-				},
-				Book:
-				{
-					required: "Please choose your booking type",
-				} ,
-				Available_Dates: {
-					required: "Please choose your booking type",
-				}
-				
-			},
+		$.validator.addMethod(
+            "phonePattern",
+            function (value, element) {
+                return /^01/.test(value);
+            },
+            "Your phone number should start with 01"
+        );
+
+        $("#contact-form").validate({
+            rules: {
+                Name: "required",
+                Telephone: {
+                    required: true,
+                    number: true,
+                    phonePattern: true,
+                    minlength: 11,
+                },
+                Book: {
+                    required: true,
+                },
+                Available_Dates: {
+                    required: true,
+                }
+            },
+            messages: {
+                Name: "Please enter your name",
+                Telephone: {
+                    required: "Please enter your phone number",
+                    number: "Please enter only digits",
+                    phonePattern: "Your phone number should start with 01",
+                    minlength: "Your telephone number should contain 11 digits",
+
+                },
+                Book: {
+                    required: "Please choose your booking type",
+                },
+                Available_Dates: {
+                    required: "Please choose the available date",
+                }
+            },
+
 			errorElement: "div",
 			errorPlacement: function (error, element) {
 				// Add the `help-block` class to the error element
