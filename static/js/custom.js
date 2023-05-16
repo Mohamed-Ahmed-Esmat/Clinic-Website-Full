@@ -158,49 +158,62 @@ $(function () {
 	});*/
 
 	$(document).ready(function () {
+		// Add custom method for phone number validation
 		$.validator.addMethod(
-            "phonePattern",
-            function (value, element) {
-                return /^01/.test(value);
-            },
-            "Your phone number should start with 01"
-        );
+		  "phonePattern",
+		  function (value, element) {
+			  return /^01/.test(value);
+		  },
+		  "Your phone number should start with 01"
+	  );
 
-        $("#contact-form").validate({
-            rules: {
-                Name: "required",
-                Telephone: {
-                    required: true,
-                    number: true,
-                    phonePattern: true,
-                    minlength: 11,
-					maxlength:11
-                },
-                Book: {
-                    required: true,
-                },
-                Available_Dates: {
-                    required: true,
-                }
-            },
-            messages: {
-                Name: "Please enter your name",
-                Telephone: {
-                    required: "Please enter your phone number",
-                    number: "Please enter only digits",
-                    phonePattern: "Your phone number should start with 01",
-                    minlength: "Your telephone number should contain 11 digits",
-					maxlength: "Your telephone number should contain 11 digits only"
+	  $.validator.addMethod(
+		  "namePattern",
+		  function (value, element) {
+			return /^[A-Za-z\s.,'-]+$/.test(value);
+		  },
+		  "Please enter a valid name"
+		);
 
-                },
-                Book: {
-                    required: "Please choose your booking type",
-                },
-                Available_Dates: {
-                    required: "Please choose the available date",
-                }
-            },
+	  $("#contact-form").validate({
+		  rules: {
+			 Name: {
+				  required: true,
+				  namePattern: true,
+			  },
+			  Telephone: {
+				  required: true,
+				  number: true,
+				  phonePattern: true,
+				  minlength: 11,
+				  maxlength:11
+			  },
+			  Book: {
+				  required: true,
+			  },
+			  Available_Dates: {
+				  required: true,
+			  }
+		  },
+		  messages: {
+			  Name: {
+				  required: "Please enter your name",
+				  namePattern: "Please enter a valid name",
+			  },
+			  Telephone: {
+				  required: "Please enter your phone number",
+				  number: "Please enter only digits",
+				  phonePattern: "Your phone number should start with 01",
+				  minlength: "Your telephone number should contain 11 digits",
 
+			  },
+			  Book: {
+				  required: "Please choose your booking type",
+			  },
+			  Available_Dates: {
+				  required: "Please choose the available date",
+			  }
+		  },
 			errorElement: "div",
 			errorPlacement: function (error, element) {
 				// Add the `help-block` class to the error element
